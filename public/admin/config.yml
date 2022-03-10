@@ -11,12 +11,19 @@ collections:
       name: "home"
       file: "content/home.md"
       fields:
-        - { label: "Title", name: "title", widget: "string"}
-        - { label: "Publish Date", name: "date", widget: "datetime" }
+        - { label: "Artist Name", name: "artist_name", widget: "string"}
         - { label: "Body", name: "body", widget: "markdown"}
-        - label: 'Cats'
-          name: "cats"
-          widget: list
-          fields:
-            - { label: "Name", name: "name", widget: "string"}
-            - { label: "Description", name: "description", widget: "text"}
+  - name: "songs"
+    label: "Songs"
+    description: "Add your repertoire here along with chords, lyrics and other information."
+    folder: 'content/songs'
+    create: true
+    slug: '{{name}}'
+    fields:
+      - {label: 'Name', name: 'name', widget: 'string'}
+      - {label: 'Chords', name: 'chords', widget: 'markdown', buttons: ['bold', 'italic', 'heading-one', 'heading-two'], editor_components: []}
+      - {label: 'Lyrics', name: 'lyrics', widget: 'markdown'}
+      - {label: 'Key', name: 'key', widget: 'string'}
+      - {label: 'Tempo', name: 'tempo', widget: 'number', default: 120, value_type: "int", min: 0, max: 1000}
+      - {label: 'Video Link', name: 'video_link', widget: 'string'}
+      - {label: 'Audio Link', name: 'audio_link', widget: 'string'}

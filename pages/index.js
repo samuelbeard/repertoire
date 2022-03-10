@@ -9,21 +9,17 @@ export default function Home() {
             <Head>
                 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
             </Head>
-            <div className="">
-                <h1>Repertoire</h1>
+            <div className="min-h-screen bg-slate-800 text-white">
+                <div className="w-full h-20 bg-rose-600 items-center flex justify-center">
+                    <h1 className="text-3xl text-white uppercase font-bold tracking-widest">
+                        Repertoire
+                    </h1>
+                </div>
+                <article>
+                    <h1>{artist_name}</h1>
+                    <HomeContent />
+                </article>
             </div>
-            <article>
-                <h1>{title}</h1>
-                <HomeContent />
-                <ul>
-                    {cats.map((cat, k) => (
-                        <li key={k}>
-                            <h2>{cat.name}</h2>
-                            <p>{cat.description}</p>
-                        </li>
-                    ))}
-                </ul>
-            </article>
         </>
     )
 }
