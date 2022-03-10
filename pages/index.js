@@ -2,7 +2,7 @@ import Head from "next/head"
 import { attributes, react as HomeContent } from "../content/home.md"
 
 export default function Home() {
-    let { title, cats } = attributes
+    let { artist_name } = attributes
 
     return (
         <>
