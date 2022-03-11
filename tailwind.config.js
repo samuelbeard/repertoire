@@ -11,6 +11,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+                mono: ["Source Code Pro", ...defaultTheme.fontFamily.mono],
             },
         },
     },

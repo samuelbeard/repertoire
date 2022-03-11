@@ -1,8 +1,11 @@
+import matter from "gray-matter"
 import Head from "next/head"
-import { attributes, react as HomeContent } from "../content/home.md"
+import ReactMarkdown from "react-markdown"
+// import { attributes, react as HomeContent } from "../content/home.md"
 
-export default function Home() {
-    let { artist_name } = attributes
+export default function Home({ frontmatter, markdownBody }) {
+    const { artist_name } = frontmatter
+    console.log(markdownBody)
 
     return (
         <>
@@ -17,9 +20,21 @@ export default function Home() {
                 </div>
                 <article>
                     <h1>{artist_name}</h1>
-                    <HomeContent />
+                    <ReactMarkdown>{markdownBody}</ReactMarkdown>
                 </article>
             </div>
         </>
     )
+}
+
+export const getStaticProps = async () => {
+    const content = await import(`../content/home.md`)
+    const data = matter(content.default)
+
+    return {
+        props: {
+            frontmatter: data.data,
+            markdownBody: data.content,
+        },
+    }
 }

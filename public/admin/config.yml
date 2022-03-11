@@ -3,6 +3,10 @@ backend:
   branch: main # Branch to update (optional; defaults to master)
 media_folder: public/img
 public_folder: img
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '_'
 collections:
   - name: "pages"
     label: "Pages"
@@ -18,7 +22,7 @@ collections:
     description: "Add your repertoire here along with chords, lyrics and other information."
     folder: 'content/songs'
     create: true
-    slug: '{{name}}'
+    slug: '{{slug}}'
     fields:
       - {label: 'Name', name: 'name', widget: 'string'}
       - {label: 'Chords', name: 'chords', widget: 'markdown', buttons: ['bold', 'italic', 'heading-one', 'heading-two'], editor_components: []}
