@@ -2,6 +2,7 @@ import matter from "gray-matter"
 import glob from "glob"
 import ReactMarkdown from "react-markdown"
 import { Tab } from "@headlessui/react"
+import Video from "../../components/Video"
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
@@ -19,7 +20,11 @@ export default function Song({ frontmatter, markdownBody }) {
                 </h1>
             </div>
             <div className="max-w-6xl mx-auto">
-                <Tabs lyrics={frontmatter.lyrics} chords={frontmatter.chords} />
+                <Tabs
+                    lyrics={frontmatter.lyrics}
+                    chords={frontmatter.chords}
+                    frontmatter={frontmatter}
+                />
             </div>
         </div>
     )
@@ -55,7 +60,7 @@ export async function getStaticPaths() {
     }
 }
 
-function Tabs({ lyrics, chords }) {
+function Tabs({ lyrics, chords, frontmatter }) {
     return (
         <div className="w-full xmax-w-md px-2 py-16 sm:px-0">
             <Tab.Group>
@@ -84,6 +89,18 @@ function Tabs({ lyrics, chords }) {
                     >
                         Chords
                     </Tab>
+                    <Tab
+                        className={({ selected }) =>
+                            classNames(
+                                "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
+                                selected
+                                    ? "bg-slate-50/10"
+                                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                            )
+                        }
+                    >
+                        Details
+                    </Tab>
                 </Tab.List>
                 <Tab.Panels className="mt-2">
                     <Tab.Panel className="bg-white p-6">
@@ -99,6 +116,16 @@ function Tabs({ lyrics, chords }) {
                         >
                             {chords}
                         </ReactMarkdown>
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        <div className="bg-white p-6">
+                            <p>Key: {frontmatter.key}</p>
+                            <p>Tempo: {frontmatter.tempo}</p>
+                            <p>Time Signature: {frontmatter.time_signature}</p>
+                            <p>Video Link: {frontmatter.video_link}</p>
+                            <Video youtube={frontmatter.video_link} />
+                            <p>Audio Link: {frontmatter.audio_link}</p>
+                        </div>
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>

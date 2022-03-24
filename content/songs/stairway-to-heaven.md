@@ -190,6 +190,7 @@ lyrics: |-
   And she's buying a stairway to heaven
 key: A Major
 tempo: 120
+time_signature: 4/4
 video_link: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 audio_link: https://soundcloud.com/octocore/heartbeats?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
 ---

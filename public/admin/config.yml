@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
-media_folder: public/img
+  branch: main
+media_folder: 'public/img'
 public_folder: img
 slug:
   encoding: 'ascii'
@@ -28,6 +28,7 @@ collections:
       - {label: 'Chords', name: 'chords', widget: 'markdown', buttons: ['bold', 'italic', 'heading-one', 'heading-two'], editor_components: []}
       - {label: 'Lyrics', name: 'lyrics', widget: 'markdown'}
       - {label: 'Key', name: 'key', widget: 'string'}
+      - {label: 'Time Signature', name: 'time_signature', widget: 'string'}
       - {label: 'Tempo', name: 'tempo', widget: 'number', default: 120, value_type: "int", min: 0, max: 1000}
       - {label: 'Video Link', name: 'video_link', widget: 'string'}
       - {label: 'Audio Link', name: 'audio_link', widget: 'string'}

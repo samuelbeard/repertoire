@@ -1,10 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Righteous&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+    h1 {
+        @apply text-6xl font-bold font-display;
+    }
+
+    h2 {
+        @apply text-5xl font-bold font-display;
+    }
+
+    h3 {
+        @apply text-4xl font-bold font-display;
+    }
+
     .markdown {
         @apply text-gray-800 font-mono whitespace-pre-wrap;
     }

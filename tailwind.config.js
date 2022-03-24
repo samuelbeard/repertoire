@@ -12,6 +12,7 @@ module.exports = {
             fontFamily: {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
                 mono: ["Source Code Pro", ...defaultTheme.fontFamily.mono],
+                display: ["Righteous"],
             },
         },
     },
