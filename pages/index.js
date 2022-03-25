@@ -1,22 +1,58 @@
 import matter from "gray-matter"
 import Head from "next/head"
 import ReactMarkdown from "react-markdown"
+import SongCard from "../components/SongCard"
+import Link from "next/link"
+import Script from "next/script"
 // import glob from "glob"
 // import { attributes, react as HomeContent } from "../content/home.md"
 
 export default function Home({ frontmatter, markdownBody, allSongs }) {
     const { artist_name } = frontmatter
-    console.log(markdownBody)
-
-    console.log(allSongs)
 
     return (
         <>
             <Head>
-                <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+                <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
             </Head>
-            <div className="min-h-screen bg-slate-800 text-white">
-                <div className="w-full h-20 bg-rose-600 items-center flex justify-center">
+            <div className="min-h-screen bg-slate-50">
+                <div className="max-w-7xl mx-auto grid grid-cols-12 gap-12 pt-24">
+                    <div className="col-span-2">
+                        <div className="h-16 border-b-2 border-black">
+                            <h1 className="text-2xl tracking-widest text-yellow-500">
+                                Repertoire
+                            </h1>
+                        </div>
+                    </div>
+                    <div className="col-span-7">
+                        <div className="h-16 border-b-2 border-black">
+                            <h1 className="text-2xl tracking-widest">
+                                {artist_name}
+                            </h1>
+                        </div>
+                        <div className="grid grid-cols-2 gap-6 mt-6">
+                            {allSongs?.map(song => (
+                                <SongCard
+                                    key={song.frontmatter.slug}
+                                    frontmatter={song.frontmatter}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                    <div className="col-span-3">
+                        <div className="h-16 border-b-2 border-black text-right">
+                            {/* <h1 className="text-2xl tracking-widest">
+                                {artist_name}
+                            </h1> */}
+                            <Link href="/admin">
+                                <a className="text-white text-sm bg-black px-4 py-2 cursor-pointer hover:text-yellow-400">
+                                    Login
+                                </a>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="w-full h-20 bg-rose-600 items-center flex justify-center">
                     <h1 className="text-3xl text-white uppercase font-bold tracking-widest">
                         Repertoire
                     </h1>
@@ -35,7 +71,7 @@ export default function Home({ frontmatter, markdownBody, allSongs }) {
                             <p>{song.frontmatter.key}</p>
                         </div>
                     ))}
-                </section>
+                </section> */}
             </div>
         </>
     )

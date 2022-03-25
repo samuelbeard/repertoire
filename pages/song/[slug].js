@@ -11,7 +11,6 @@ function classNames(...classes) {
 export default function Song({ frontmatter, markdownBody }) {
     if (!frontmatter) return <></>
 
-    console.log(frontmatter)
     return (
         <div className="min-h-screen bg-slate-800">
             <div className="w-full h-24 bg-rose-600 flex justify-center items-center">
