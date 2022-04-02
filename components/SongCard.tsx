@@ -30,14 +30,16 @@ const SongCard: FC<Props> = ({ slug, frontmatter }) => {
     }, [])
 
     return (
-        <Link href="/">
+        <Link href={`/song/${slug}`}>
             <a
-                className={`bg-amber-100 p-6 col-span-1 hover:bg-black hover:text-white transition-all`}
+                className={`bg-amber-100 p-6 col-span-1 hover:bg-amber-200 transition-all`}
             >
                 <h3 className={`text-xl tracking-widest mb-4`}>
                     {frontmatter.name}
                 </h3>
-                <div className={`bg-amber-300 flex justify-between p-3`}>
+                <div
+                    className={`bg-amber-300 flex justify-between p-3 text-black`}
+                >
                     <span>{frontmatter.key}</span>
                     <span>{frontmatter.time_signature}</span>
                     <span>

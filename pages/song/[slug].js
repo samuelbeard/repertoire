@@ -3,18 +3,24 @@ import glob from "glob"
 import ReactMarkdown from "react-markdown"
 import { Tab } from "@headlessui/react"
 import Video from "../../components/Video"
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ")
-}
+import Link from "next/link"
+import { RiArrowGoBackFill } from "react-icons/ri"
+import { classNames } from "../../util/helpers"
 
 export default function Song({ frontmatter, markdownBody }) {
     if (!frontmatter) return <></>
 
     return (
-        <div className="min-h-screen bg-slate-800">
-            <div className="w-full h-24 bg-rose-600 flex justify-center items-center">
-                <h1 className="text-white text-2xl font-bold tracking-widest">
+        <div className="min-h-screen">
+            <div className="w-full h-8 bg-black flex xjustify-center items-center">
+                <Link href="/">
+                    <a className="text-white mx-12 hover:text-amber-500">
+                        <RiArrowGoBackFill />
+                    </a>
+                </Link>
+            </div>
+            <div className="w-full h-24 bg-amber-500 flex justify-center items-center">
+                <h1 className="text-white text-3xl font-bold tracking-widest">
                     {frontmatter.name}
                 </h1>
             </div>
@@ -61,16 +67,19 @@ export async function getStaticPaths() {
 
 function Tabs({ lyrics, chords, frontmatter }) {
     return (
-        <div className="w-full xmax-w-md px-2 py-16 sm:px-0">
+        <div className="w-full px-2 py-16 sm:px-0">
             <Tab.Group>
                 <Tab.List className="flex p-1 space-x-1">
-                    <Tab
+                    <StyledTab title="Lyrics" />
+                    <StyledTab title="Chords" />
+                    <StyledTab title="Details" />
+                    {/* <Tab
                         className={({ selected }) =>
                             classNames(
-                                "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
+                                "w-24 py-2.5 leading-5 font-bold uppercase tracking-widest text-amber-500 bg-amber-50",
                                 selected
                                     ? "bg-slate-50/10"
-                                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                                    : "text-black hover:bg-white/[0.12] hover:text-white"
                             )
                         }
                     >
@@ -82,7 +91,7 @@ function Tabs({ lyrics, chords, frontmatter }) {
                                 "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
                                 selected
                                     ? "bg-slate-50/10"
-                                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                                    : "text-black hover:bg-white/[0.12] hover:text-white"
                             )
                         }
                     >
@@ -94,12 +103,12 @@ function Tabs({ lyrics, chords, frontmatter }) {
                                 "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
                                 selected
                                     ? "bg-slate-50/10"
-                                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                                    : "text-black hover:bg-white/[0.12] hover:text-white"
                             )
                         }
                     >
                         Details
-                    </Tab>
+                    </Tab> */}
                 </Tab.List>
                 <Tab.Panels className="mt-2">
                     <Tab.Panel className="bg-white p-6">
@@ -131,3 +140,18 @@ function Tabs({ lyrics, chords, frontmatter }) {
         </div>
     )
 }
+
+const StyledTab = ({ title }) => (
+    <Tab
+        className={({ selected }) =>
+            classNames(
+                "!mx-4 py-3 px-12 leading-5 font-bold uppercase tracking-widest",
+                selected
+                    ? "text-black bg-amber-50 border-b-4 border-black"
+                    : "text-black hover:bg-amber-50"
+            )
+        }
+    >
+        {title}
+    </Tab>
+)

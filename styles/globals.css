@@ -22,7 +22,7 @@
     }
 
     .markdown h1 {
-        @apply text-lg font-bold -mb-4 text-rose-600;
+        @apply text-lg font-bold -mb-4 text-amber-600;
     }
 
     .markdown h2 {

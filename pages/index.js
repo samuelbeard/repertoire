@@ -33,7 +33,8 @@ export default function Home({ frontmatter, markdownBody, allSongs }) {
                         <div className="grid grid-cols-2 gap-6 mt-6">
                             {allSongs?.map(song => (
                                 <SongCard
-                                    key={song.frontmatter.slug}
+                                    key={song.slug}
+                                    slug={song.slug}
                                     frontmatter={song.frontmatter}
                                 />
                             ))}
