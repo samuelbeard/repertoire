@@ -49,7 +49,7 @@ export async function getStaticProps({ ...ctx }) {
 }
 
 export async function getStaticPaths() {
-    //get all .md files in the posts dir
+    //get all .md files in the songs dir
     const songs = glob.sync("content/songs/*.md")
 
     //remove path and extension to leave filename only
@@ -73,42 +73,6 @@ function Tabs({ lyrics, chords, frontmatter }) {
                     <StyledTab title="Lyrics" />
                     <StyledTab title="Chords" />
                     <StyledTab title="Details" />
-                    {/* <Tab
-                        className={({ selected }) =>
-                            classNames(
-                                "w-24 py-2.5 leading-5 font-bold uppercase tracking-widest text-amber-500 bg-amber-50",
-                                selected
-                                    ? "bg-slate-50/10"
-                                    : "text-black hover:bg-white/[0.12] hover:text-white"
-                            )
-                        }
-                    >
-                        Lyrics
-                    </Tab>
-                    <Tab
-                        className={({ selected }) =>
-                            classNames(
-                                "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
-                                selected
-                                    ? "bg-slate-50/10"
-                                    : "text-black hover:bg-white/[0.12] hover:text-white"
-                            )
-                        }
-                    >
-                        Chords
-                    </Tab>
-                    <Tab
-                        className={({ selected }) =>
-                            classNames(
-                                "w-24 py-2.5 text-sm leading-5 font-bold uppercase tracking-widest text-rose-600",
-                                selected
-                                    ? "bg-slate-50/10"
-                                    : "text-black hover:bg-white/[0.12] hover:text-white"
-                            )
-                        }
-                    >
-                        Details
-                    </Tab> */}
                 </Tab.List>
                 <Tab.Panels className="mt-2">
                     <Tab.Panel className="bg-white p-6">
