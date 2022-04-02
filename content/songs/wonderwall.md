@@ -2,8 +2,8 @@
 name: Wonderwall
 chords: |-
   G              G               G
-
   Today is gonna be the day that they're gonna throw it back to you
+      H                D            R
   And by now, you should've somehow realised what you gotta do
   I don't believe that anybody feels the way I do about you now
 
